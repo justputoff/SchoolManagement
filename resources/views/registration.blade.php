@@ -55,6 +55,20 @@
       .alert .btn-close {
         margin-left: 20px; /* Tambahkan margin kiri */
       }
+        .important-notes {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .important-notes h5 {
+            font-weight: bold;
+        }
+        .important-notes ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -154,6 +168,17 @@
             </div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
+
+        <!-- Catatan Penting -->
+        <div class="important-notes">
+            <h5>Catatan Penting:</h5>
+            <ul>
+                <li>Refund biaya yang telah dibayarkan bisa dilakukan jika siswa belum mulai belajar/mengikuti program: refund dana sebesar 75% dari yang telah dibayarkan.</li>
+                <li>Refund biaya yang telah dibayarkan tidak bisa dilakukan, apabila siswa telah mulai belajar/mengikuti program.</li>
+                <li>Biaya pendaftaran 50.000</li>
+                <li>Biaya buku 35.000, 40.000, 45.000, 50.000</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
