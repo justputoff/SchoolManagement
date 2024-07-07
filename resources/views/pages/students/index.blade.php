@@ -31,7 +31,7 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->email }}</td>
-                        <td>{{ $student->cabang }}</td>
+                        <td>{{ $student->cabang ?? '-' }}</td>
                         <td>{{ $student->user->name }}</td>
                         <td>{{ $student->address }}</td>
                         <td>{{ $student->phone }}</td>
