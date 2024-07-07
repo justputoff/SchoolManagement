@@ -41,9 +41,10 @@ class StudentController extends Controller
             'phone' => 'required|string|max:15',
             'package_id' => 'required|array',
             'package_id.*' => 'exists:packages,id',
+            'cabang' => 'required|string|max:255',
         ]);
 
-        $student = Student::create($request->only('name', 'email', 'user_id', 'address', 'phone'));
+        $student = Student::create($request->only('name', 'email', 'user_id', 'address', 'phone', 'cabang'));
         foreach ($request->package_id as $index => $packageId) {
             $student->packages()->attach($packageId, ['status' => 'active']);
         }
@@ -76,9 +77,10 @@ class StudentController extends Controller
             'package_id.*' => 'exists:packages,id',
             'status' => 'required|array',
             'status.*' => 'in:active,inactive',
+            'cabang' => 'required|string|max:255',
         ]);
 
-        $student->update($request->only('name', 'email', 'user_id', 'address', 'phone'));
+        $student->update($request->only('name', 'email', 'user_id', 'address', 'phone', 'cabang'));
 
         // Sync packages with status
         $syncData = [];
