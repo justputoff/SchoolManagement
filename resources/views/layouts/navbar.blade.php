@@ -80,6 +80,13 @@
                   <div data-i18n="Analytics">Billings</div>
                 </a>
               </li>
+              <!-- Registration -->
+              <li class="menu-item {{ Route::is('registration*') ? 'active' : '' }}">
+                <a href="{{ route('registration.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-file"></i>
+                  <div data-i18n="Analytics">Registration</div>
+                </a>
+              </li>
               @else
               <!-- Schedules -->
               <li class="menu-item {{ Route::is('schedules*') ? 'active' : '' }}">

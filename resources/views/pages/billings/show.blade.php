@@ -84,7 +84,7 @@
       }
     </style>
 </head>
-<body>
+<body onload="window.print()">
     <div class="page">
         <div class="paid-stamp">PAID</div>
         <div class="row">
