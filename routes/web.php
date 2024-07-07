@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
+Route::get('registration/create', [RegistrationController::class, 'create'])->name('registration.create');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
@@ -99,7 +101,5 @@ Route::middleware('auth')->group(function () {
     Route::get('registration/{id}', [RegistrationController::class, 'show'])->name('registration.show'); // Added show route
 });
 
-Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
-Route::get('registration/create', [RegistrationController::class, 'create'])->name('registration.create');
 
 require __DIR__.'/auth.php';
