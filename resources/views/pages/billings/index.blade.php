@@ -31,7 +31,7 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $billing->user->name }}</td>
-                        <td>{{ $billing->package->name }}</td>
+                        <td>{{ $billing->package->name }} - {{ $billing->package->type }}</td>
                         <td>{{ $billing->payment_date }}</td>
                         <td>{{ $billing->due_date }}</td>
                         <td>Rp {{ number_format($billing->amount, 2, ',', '.') }}</td>

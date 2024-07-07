@@ -16,8 +16,6 @@
                     <tr class="text-nowrap table-dark">
                         <th class="text-white">No</th>
                         <th class="text-white">Name</th>
-                        <th class="text-white">Schedule</th>
-                        <th class="text-white">Teacher</th>
                         <th class="text-white">Actions</th>
                     </tr>
                 </thead>
@@ -26,8 +24,6 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $classRoom->name }}</td>
-                        <td>{{ $classRoom->schedule->date ?? 'N/A' }}</td>
-                        <td>{{ $classRoom->schedule->teacher->name ?? 'N/A'}}</td>
                         <td>
                             <a href="{{ route('class_rooms.edit', $classRoom->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('class_rooms.destroy', $classRoom->id) }}" method="POST" style="display:inline-block;">

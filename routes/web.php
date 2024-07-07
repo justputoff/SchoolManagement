@@ -10,6 +10,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -90,6 +91,15 @@ Route::middleware('auth')->group(function () {
     Route::put('billings/{billing}/payments/{payment}', [BillingController::class, 'updatePayment'])->name('payments.update');
     Route::delete('billings/{billing}/payments/{payment}', [BillingController::class, 'destroyPayment'])->name('payments.destroy');
     Route::get('billings/{billing}', [BillingController::class, 'show'])->name('billings.show');
+    
+    Route::get('registration', [RegistrationController::class, 'index'])->name('registration.index');
+    Route::get('registration/{id}/edit', [RegistrationController::class, 'edit'])->name('registration.edit');
+    Route::put('registration/{id}', [RegistrationController::class, 'update'])->name('registration.update');
+    Route::delete('registration/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
+    Route::get('registration/{id}', [RegistrationController::class, 'show'])->name('registration.show'); // Added show route
 });
+
+Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
+Route::get('registration/create', [RegistrationController::class, 'create'])->name('registration.create');
 
 require __DIR__.'/auth.php';

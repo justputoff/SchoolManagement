@@ -21,7 +21,7 @@
                     <label for="package_id" class="form-label">Package</label>
                     <select class="form-control" id="package_id" name="package_id" required>
                         @foreach($packages as $package)
-                            <option value="{{ $package->id }}" {{ $billing->package_id == $package->id ? 'selected' : '' }}>{{ $package->name }}</option>
+                            <option value="{{ $package->id }}" {{ $billing->package_id == $package->id ? 'selected' : '' }}>{{ $package->name }} - {{ $package->type }} {{ $package->level == $package->name ? '' : ' -' . $package->level }}</option>
                         @endforeach
                     </select>
                 </div>
