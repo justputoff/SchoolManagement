@@ -49,7 +49,7 @@ class TransactionController extends Controller
         return view('pages.transactions.edit', compact('transaction', 'students'));
     }
 
-    public function update(Request $request, Transaction $transaction, Billing $billing)
+    public function update(Request $request, Transaction $transaction)
     {
         $request->validate([
             'student_id' => 'required|exists:students,id',
@@ -63,7 +63,6 @@ class TransactionController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'transaction_date' => $request->transaction_date,
-            'billing_id' => $billing->id,
         ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction updated successfully.');
