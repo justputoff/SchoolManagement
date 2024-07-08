@@ -20,7 +20,7 @@ class TransactionController extends Controller
     {
         $billing = Billing::find($billing); 
         $students = Student::all();
-        return view('pages.transactions.create', compact('students', 'billing'));
+        return view('pages.transactions.create', compact(['students', 'billing']));
     }
 
     public function store(Request $request, Billing $billing)
