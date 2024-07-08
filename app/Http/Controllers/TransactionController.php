@@ -16,10 +16,11 @@ class TransactionController extends Controller
         return view('pages.transactions.index', compact('transactions'));
     }
 
-    public function create()
+    public function create(Billing $billing)
     {
+        $billing = Billing::find($billing); 
         $students = Student::all();
-        return view('pages.transactions.create', compact('students'));
+        return view('pages.transactions.create', compact('students', 'billing'));
     }
 
     public function store(Request $request, Billing $billing)

@@ -102,7 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::get('registration/{id}', [RegistrationController::class, 'show'])->name('registration.show'); // Added show route
 
     Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    Route::get('transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::get('transactions/create/{billing}', [TransactionController::class, 'create'])->name('transactions.create');
     Route::post('transactions/{billing}', [TransactionController::class, 'store'])->name('transactions.store');
     Route::get('transactions/{transaction}/edit', [TransactionController::class, 'edit'])->name('transactions.edit');
     Route::put('transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');

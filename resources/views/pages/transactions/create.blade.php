@@ -6,7 +6,7 @@
     <h4 class="fw-bold py-3 mb-4">Add Transaction</h4>
     <div class="card mb-4">
         <div class="card-body">
-            <form action="{{ route('transactions.store') }}" method="POST">
+            <form action="{{ route('transactions.store', $billing->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="student_id" class="form-label">Student</label>
