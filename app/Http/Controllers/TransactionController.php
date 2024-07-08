@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
 use App\Models\Transaction;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -21,14 +22,13 @@ class TransactionController extends Controller
         return view('pages.transactions.create', compact('students'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Billing $billing)
     {
         $request->validate([
             'student_id' => 'required|exists:students,id',
             'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'transaction_date' => 'required|date',
-            'billing_id' => 'required|exists:billings,id',
         ]);
 
         Transaction::create([
@@ -37,7 +37,7 @@ class TransactionController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'transaction_date' => $request->transaction_date,
-            'billing_id' => $request->billing_id,
+            'billing_id' => $billing->id,
         ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
@@ -49,14 +49,13 @@ class TransactionController extends Controller
         return view('pages.transactions.edit', compact('transaction', 'students'));
     }
 
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Transaction $transaction, Billing $billing)
     {
         $request->validate([
             'student_id' => 'required|exists:students,id',
             'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'transaction_date' => 'required|date',
-            'billing_id' => 'required|exists:billings,id',
         ]);
 
         $transaction->update([
@@ -64,7 +63,7 @@ class TransactionController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'transaction_date' => $request->transaction_date,
-            'billing_id' => $request->billing_id,
+            'billing_id' => $billing->id,
         ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction updated successfully.');
