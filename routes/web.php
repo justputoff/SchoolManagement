@@ -11,11 +11,12 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
 Route::get('registration/create', [RegistrationController::class, 'create'])->name('registration.create');
 
@@ -99,6 +100,13 @@ Route::middleware('auth')->group(function () {
     Route::put('registration/{id}', [RegistrationController::class, 'update'])->name('registration.update');
     Route::delete('registration/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
     Route::get('registration/{id}', [RegistrationController::class, 'show'])->name('registration.show'); // Added show route
+
+    Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::post('transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('transactions/{transaction}/edit', [TransactionController::class, 'edit'])->name('transactions.edit');
+    Route::put('transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');
+    Route::delete('transactions/{transaction}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
 });
 
 

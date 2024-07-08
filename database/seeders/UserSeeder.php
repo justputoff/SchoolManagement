@@ -97,5 +97,22 @@ class UserSeeder extends Seeder
                 'email' => 'guru2@example.com',
             ],
         ]);
+
+        DB::table('students')->insert([
+            [
+                'user_id' => 8,
+                'name' => 'Siswa 1',
+                'address' => 'Jl. Pendidikan No. 1',
+                'phone' => '081234567890',
+                'email' => 'siswa1@example.com',
+            ],
+            [
+                'user_id' => 9,
+                'name' => 'Siswa 2',
+                'address' => 'Jl. Pendidikan No. 2',
+                'phone' => '081234567891',
+                'email' => 'siswa2@example.com',
+            ],
+        ]);
     }
 }
