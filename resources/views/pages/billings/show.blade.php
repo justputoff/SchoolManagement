@@ -165,8 +165,7 @@
                 </p>
                 <p style="font-size: 16px">
                     Info Pembayaran: <br>
-                    By check: Pembayaran paling lambat <br>
-                    tanggal {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
+                    By check: pembayaran jatuh tempo selanjutnya {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
                     Transfer Bank: 066901001096565 <br>
                     Lainnya: Bank BRI <br>
                     PT. Intents Education Solution
