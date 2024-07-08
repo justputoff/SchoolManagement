@@ -27,6 +27,9 @@
                         <option value="Bimbel SD">Bimbel SD</option>
                         <option value="Bimbel SMP">Bimbel SMP</option>
                         <option value="Bimbel SMA">Bimbel SMA</option>
+                        <option value="General Upper">General Upper</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="General Advance">General Advance</option>
                     </select>
                 </div>
                 <div class="mb-3">

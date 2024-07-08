@@ -38,6 +38,10 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="payment_method" class="form-label">Payment Method</label>
+                    <input type="text" class="form-control" id="payment_method" name="payment_method" required>
+                </div>
+                <div class="mb-3">
                     <label for="payment_proof" class="form-label">Payment Proof</label>
                     <input type="file" class="form-control" id="payment_proof" name="payment_proof">
                 </div>

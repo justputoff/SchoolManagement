@@ -157,13 +157,18 @@
             <div class="form-group">
                 <label for="pilihan_program_bimbel" class="form-label">Pilihan Program Bimbel</label>
                 <select class="form-control" id="pilihan_program_bimbel" name="pilihan_program_bimbel" required>
-                    <option value="REGULER">REGULER</option>
-                    <option value="PRIVATE">PRIVATE</option>
-                    <option value="HOME SERVICE">HOME SERVICE</option>
-                    <option value="ENGLISH COURSE">ENGLISH COURSE</option>
-                    <option value="JAPANESE COURSE">JAPANESE COURSE</option>
-                    <option value="CALISTUNG">CALISTUNG</option>
-                    <option value="BIMBEL (SD-SMP-SMA)">BIMBEL (SD-SMP-SMA)</option>
+                    <option value="ENGLISH COURSE - REGULAR">ENGLISH COURSE - REGULAR</option>
+                    <option value="ENGLISH COURSE - PRIVATE">ENGLISH COURSE - PRIVATE</option>
+                    <option value="ENGLISH COURSE - HOME SERVICE">ENGLISH COURSE - HOME SERVICE</option>
+                    <option value="JAPANESE COURSE - REGULAR">JAPANESE COURSE - REGULAR</option>
+                    <option value="JAPANESE COURSE - PRIVATE">JAPANESE COURSE - PRIVATE</option>
+                    <option value="JAPANESE COURSE - HOME SERVICE">JAPANESE COURSE - HOME SERVICE</option>
+                    <option value="CALISTUNG - REGULAR">CALISTUNG - REGULAR</option>
+                    <option value="CALISTUNG - PRIVATE">CALISTUNG - PRIVATE</option>
+                    <option value="CALISTUNG - HOME SERVICE">CALISTUNG - HOME SERVICE</option>
+                    <option value="BIMBEL (SD-SMP-SMA) - REGULAR">BIMBEL (SD-SMP-SMA) - REGULAR</option>
+                    <option value="BIMBEL (SD-SMP-SMA) - PRIVATE">BIMBEL (SD-SMP-SMA) - PRIVATE</option>
+                    <option value="BIMBEL (SD-SMP-SMA) - HOME SERVICE">BIMBEL (SD-SMP-SMA) - HOME SERVICE</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>

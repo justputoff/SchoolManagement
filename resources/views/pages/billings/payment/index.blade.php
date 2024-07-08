@@ -19,6 +19,7 @@
                             <th class="text-white">Package</th>
                             <th class="text-white">Payment Date</th>
                             <th class="text-white">Amount</th>
+                            <th class="text-white">Payment Method</th>
                             <th class="text-white">Status</th>
                             <th class="text-white">Payment Proof</th>
                             <th class="text-white">Actions</th>
@@ -32,6 +33,7 @@
                             <td>{{ $payment->package->name }}</td>
                             <td>{{ $payment->payment_date }}</td>
                             <td>Rp {{ number_format($payment->amount, 2, ',', '.') }}</td>
+                            <td>{{ $payment->payment_method }}</td>
                             <td>{{ $payment->status }}</td>
                             <td>
                                 @if($payment->payment_proof)

@@ -31,6 +31,10 @@
                     <input type="number" class="form-control" id="amount" name="amount" value="{{ $payment->amount }}" required>
                 </div>
                 <div class="mb-3">
+                    <label for="payment_method" class="form-label">Payment Method</label>
+                    <input type="text" class="form-control" id="payment_method" name="payment_method" value="{{ $payment->payment_method }}" required>
+                </div>
+                <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select class="form-control" id="status" name="status" required>
                         <option value="Pending" {{ $payment->status == 'Pending' ? 'selected' : '' }}>Pending</option>

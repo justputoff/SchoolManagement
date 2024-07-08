@@ -95,6 +95,7 @@ class BillingController extends Controller
             'package_id' => 'required|exists:packages,id',
             'payment_date' => 'required|date',
             'amount' => 'required|numeric',
+            'payment_method' => 'required|string',
             'status' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf',
         ]);
@@ -128,6 +129,7 @@ class BillingController extends Controller
             'package_id' => 'required|exists:packages,id',
             'payment_date' => 'required|date',
             'amount' => 'required|numeric',
+            'payment_method' => 'required|string',
             'status' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf',
         ]);
