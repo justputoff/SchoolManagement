@@ -105,7 +105,7 @@
             <div class="col-4 text-end">
                 <div class="">
                     <span class="fw-bold">FAKTUR </span> <br>
-                    <span class="fst-italic">#INV00{{ $billing->id }} </span> <br>
+                    <span class="fst-italic">#INV{{ str_pad($billing->id, 3, '0', STR_PAD_LEFT) }} </span> <br>
                     <span style="font-size: 14px">
                         Tanggal: {{ date('d - F -Y', strtotime($billing->payment_date)) }} <br>
                         Jatuh Tempo: {{ date('d - F - Y', strtotime($billing->due_date)) }}
