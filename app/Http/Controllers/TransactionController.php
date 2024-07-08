@@ -28,6 +28,7 @@ class TransactionController extends Controller
             'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'transaction_date' => 'required|date',
+            'billing_id' => 'required|exists:billings,id',
         ]);
 
         Transaction::create([
@@ -36,6 +37,7 @@ class TransactionController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'transaction_date' => $request->transaction_date,
+            'billing_id' => $request->billing_id,
         ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
@@ -54,6 +56,7 @@ class TransactionController extends Controller
             'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'transaction_date' => 'required|date',
+            'billing_id' => 'required|exists:billings,id',
         ]);
 
         $transaction->update([
@@ -61,6 +64,7 @@ class TransactionController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'transaction_date' => $request->transaction_date,
+            'billing_id' => $request->billing_id,
         ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction updated successfully.');

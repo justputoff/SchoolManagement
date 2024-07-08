@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $fillable = ['user_id', 'student_id', 'description', 'amount', 'transaction_date'];
+    protected $fillable = ['user_id', 'student_id', 'description', 'amount', 'transaction_date', 'billing_id'];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,5 +17,9 @@ class Transaction extends Model
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+    public function billing()
+    {
+        return $this->belongsTo(Billing::class);
     }
 }
