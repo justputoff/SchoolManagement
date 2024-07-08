@@ -11,9 +11,7 @@
                 <div class="mb-3">
                     <label for="student_id" class="form-label">Student</label>
                     <select class="form-control" id="student_id" name="student_id" required>
-                        @foreach($students as $student)
-                            <option value="{{ $student->id }}">{{ $student->name }}</option>
-                        @endforeach
+                            <option value="{{ $billing->user->student->id }}">{{ $billing->user->student->name }}</option>
                     </select>
                 </div>
                 <div class="mb-3">

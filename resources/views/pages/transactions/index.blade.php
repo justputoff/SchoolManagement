@@ -6,7 +6,8 @@
     <h4 class="fw-bold py-3 mb-4">Transactions</h4>
     <div class="card mb-4">
         <div class="card-header">
-            <a href="{{ route('transactions.create') }}" class="btn btn-primary btn-sm">Add Transaction</a>
+            <a href="{{ route('transactions.create', $billing->id) }}" class="btn btn-primary btn-sm">Add Transaction</a>
+            <a href="{{ route('billings.index') }}" class="btn btn-secondary btn-sm">Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive text-nowrap p-3">

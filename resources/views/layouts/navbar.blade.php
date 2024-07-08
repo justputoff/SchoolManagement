@@ -74,7 +74,7 @@
                 </a>
               </li>
               <!-- Billings -->
-              <li class="menu-item {{ Route::is('billings*') ? 'active' : '' }}">
+              <li class="menu-item {{ Route::is(['billings*', 'payments*', 'transactions*']) ? 'active' : '' }}">
                 <a href="{{ route('billings.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Billings</div>
@@ -96,7 +96,7 @@
                 </a>
               </li>
               <!-- Billings -->
-              <li class="menu-item {{ Route::is('billings*') ? 'active' : '' }}">
+              <li class="menu-item {{ Route::is(['billings*', 'payments*', 'transactions*']) ? 'active' : '' }}">
                 <a href="{{ route('billings.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Billings</div>

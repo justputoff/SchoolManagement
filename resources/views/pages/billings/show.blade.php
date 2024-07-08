@@ -124,7 +124,6 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Package</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Tanggal</th>
@@ -135,7 +134,6 @@
                 <tbody>
                     @foreach ($billing->payments->where('status', 'Success') as $payment)
                     <tr>
-                      <th scope="row">{{ $loop->iteration }}</th>
                       <td>{{ $billing->package->name }} - {{ $billing->package->type }}</td>
                       <td>Rp. {{ number_format($billing->amount, 0, ',', '.') }}</td>
                       <td>{{ date('d - F - Y', strtotime($payment->payment_date)) }}</td>
@@ -143,6 +141,19 @@
                       <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
                     </tr>
                     @endforeach
+                    @forelse ($billing->transactions as $transaction)
+                        <tr>
+                            <td>{{ $transaction->description }}</td>
+                            <td>Rp. {{ number_format($transaction->amount, 0, ',', '.') }}</td>
+                            <td>{{ date('d - F - Y', strtotime($transaction->transaction_date)) }}</td>
+                            <td>{{ $transaction->user->name }}</td>
+                            <td>Rp. {{ number_format($transaction->amount, 0, ',', '.') }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No transactions</td>
+                        </tr>
+                    @endforelse
                 </tbody>
               </table>
         </div>
@@ -163,7 +174,10 @@
             </div>
             <div class="col-6" style="font-size: 20px">
                 <p>
-                    <span class="fw-bold">Total</span> Rp{{ number_format($billing->payments->where('status', 'Success')->sum('amount'), 0, ',', '.') }}<br>
+                    @php
+                        $total = $billing->payments->where('status', 'Success')->sum('amount') + $billing->transactions->sum('amount');
+                    @endphp
+                    <span class="fw-bold">Total</span> Rp{{ number_format($total, 0, ',', '.') }}<br>
                 </p>
                 <hr>
                 <p>

@@ -50,7 +50,7 @@
                         <td>
                             <a href="{{ route('billings.edit', $billing->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{ route('payments.index', $billing->id) }}" class="btn btn-info btn-sm">Payments</a>
-                            <a href="{{ route('transactions.create', $billing->id) }}" class="btn btn-success btn-sm">Create Transaction</a>
+                            <a href="{{ route('transactions.index', $billing->id) }}" class="btn btn-success btn-sm">Transactions</a>
                             <a href="{{ route('billings.show', $billing->id) }}" target="_blank" class="btn btn-secondary btn-sm">Print Invoice</a>
                             <form action="{{ route('billings.destroy', $billing->id) }}" method="POST" style="display:inline-block;">
                                 @csrf

@@ -10,16 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index($billing)
     {
-        $transactions = Transaction::with('user', 'student')->get();
-        return view('pages.transactions.index', compact('transactions'));
+        $billing = Billing::find($billing);
+        $transactions = Transaction::with('user', 'student')->where('billing_id', $billing->id)->get();
+        return view('pages.transactions.index', compact('transactions', 'billing'));
     }
 
-    public function create(Billing $billing)
+    public function create($billing)
     {
-        $billing = Billing::find($billing); 
         $students = Student::all();
+        $billing = Billing::find($billing); 
         return view('pages.transactions.create', compact(['students', 'billing']));
     }
 
@@ -41,7 +42,7 @@ class TransactionController extends Controller
             'billing_id' => $billing->id,
         ]);
 
-        return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
+        return redirect()->route('transactions.index', $billing->id)->with('success', 'Transaction created successfully.');
     }
 
     public function edit(Transaction $transaction)
@@ -72,6 +73,6 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         $transaction->delete();
-        return redirect()->route('transactions.index')->with('success', 'Transaction deleted successfully.');
+        return redirect()->route('billings.index')->with('success', 'Transaction deleted successfully.');
     }
 }
