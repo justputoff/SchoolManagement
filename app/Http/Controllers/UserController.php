@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('role')->get();
+        $users = User::with('role')->whereNot('role_id', 1)->get();
         return view('pages.users.index', compact('users'));
     }
 
