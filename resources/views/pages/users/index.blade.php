@@ -18,7 +18,9 @@
             <th class="text-white">Name</th>
             <th class="text-white">Email</th>
             <th class="text-white">Role</th>
-            <th class="text-white">Actions</th>
+            @if (Auth::user()->role->name == 'admin')
+              <th class="text-white">Actions</th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -28,14 +30,16 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->role->name }}</td>
-            <td>
-              <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-              <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-              </form>
-            </td>
+            @if (Auth::user()->role->name == 'admin')
+              <td>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+              </td>
+            @endif
           </tr>
           @endforeach
         </tbody>

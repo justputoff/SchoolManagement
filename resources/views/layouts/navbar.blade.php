@@ -87,7 +87,21 @@
                   <div data-i18n="Analytics">Registration</div>
                 </a>
               </li>
-              @else
+              @elseif (Auth::user()->role->name == 'cashier')
+              <!-- Users -->
+              <li class="menu-item {{ Route::is('users*') ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-user"></i>
+                  <div data-i18n="Analytics">Users</div>
+                </a>
+              </li>
+              <!-- Students -->
+              <li class="menu-item {{ Route::is('students*') ? 'active' : '' }}">
+                <a href="{{ route('students.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                  <div data-i18n="Analytics">Students</div>
+                </a>
+              </li>
               <!-- Schedules -->
               <li class="menu-item {{ Route::is('schedules*') ? 'active' : '' }}">
                 <a href="{{ route('schedules.index') }}" class="menu-link">
