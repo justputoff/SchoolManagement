@@ -16,6 +16,7 @@
                     <tr class="text-nowrap table-dark">
                         <th class="text-white">No</th>
                         <th class="text-white">User</th>
+                        <th class="text-white">Cabang</th>
                         <th class="text-white">Package</th>
                         <th class="text-white">Payment Date</th>
                         <th class="text-white">Due Date</th>
@@ -31,6 +32,7 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $billing->user->name }}</td>
+                        <td>{{ $billing->user->student->cabang }}</td>
                         <td>{{ $billing->package->name }} - {{ $billing->package->type }}</td>
                         <td>{{ $billing->payment_date }}</td>
                         <td>{{ $billing->due_date }}</td>
