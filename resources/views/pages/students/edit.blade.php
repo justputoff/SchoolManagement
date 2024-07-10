@@ -28,7 +28,12 @@
                     <label for="user_id" class="form-label">User</label>
                     <select class="form-control" id="user_id" name="user_id" required>
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}" {{ $student->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                            @if ($user->id == $student->user_id)
+                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                            @endif
+                            @if (!$user->student)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
