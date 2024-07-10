@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
-            $table->foreignId('billing_id')->constrained('billings')->onDelete('cascade');
+            // $table->foreignId('billing_id')->constrained('billings')->onDelete('cascade');
             $table->string('description')->nullable();
+            $table->enum('payment_method', ['cash', 'bank_transfer'])->nullable();
+            $table->string('payment_proof')->nullable();
             $table->integer('amount');
             $table->date('transaction_date');
             $table->timestamps();

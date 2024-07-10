@@ -12,7 +12,7 @@
                 <div class="mb-3">
                     <label for="student_id" class="form-label">Student</label>
                     <select class="form-control" id="student_id" name="student_id" required>
-                        <option value="{{ $billing->user->student->id }}">{{ $billing->user->student->name }}</option>
+                        <option value="{{ $billing->user->student->id }}">{{ $billing->user->student->user->name }}</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -30,7 +30,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="payment_method" class="form-label">Payment Method</label>
-                    <input type="text" class="form-control" id="payment_method" name="payment_method" value="{{ $payment->payment_method }}" required>
+                    <select class="form-control" id="payment_method" name="payment_method" required>
+                        <option value="cash" {{ $payment->payment_method == 'cash' ? 'selected' : '' }}>Cash</option>
+                        <option value="bank_transfer" {{ $payment->payment_method == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description">{{ $payment->description }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-control" id="type" name="type" required>
+                        <option value="book">Book</option>
+                        <option value="registration">Registration</option>
+                        <option value="tuition fee">Tuition Fee</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>

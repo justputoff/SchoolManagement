@@ -11,7 +11,7 @@
                 <div class="mb-3">
                     <label for="student_id" class="form-label">Student</label>
                     <select class="form-control" id="student_id" name="student_id" required>
-                            <option value="{{ $billing->user->student->id }}">{{ $billing->user->student->name }}</option>
+                            <option value="{{ $billing->user->student->id }}">{{ $billing->user->student->user->name }}</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -28,6 +28,18 @@
                     <input type="number" class="form-control" id="amount" name="amount" required>
                 </div>
                 <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-control" id="type" name="type" required>
+                        <option value="book">Book</option>
+                        <option value="registration">Registration</option>
+                        <option value="tuition fee">Tuition Fee</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select class="form-control" id="status" name="status" required>
                         <option value="Pending">Pending</option>
@@ -37,11 +49,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="payment_method" class="form-label">Payment Method</label>
-                    <input type="text" class="form-control" id="payment_method" name="payment_method" required>
+                    <select class="form-control" id="payment_method" name="payment_method" required>
+                        <option value="cash">Cash</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="payment_proof" class="form-label">Payment Proof</label>
-                    <input type="file" class="form-control" id="payment_proof" name="payment_proof">
+                    <input type="file" class="form-control" id="payment_proof" name="payment_proof" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Add Payment</button>
             </form>

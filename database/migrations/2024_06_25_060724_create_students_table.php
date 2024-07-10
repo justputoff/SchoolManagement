@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('name');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email')->unique();
+            // $table->string('name');
+            // $table->string('email')->unique();
+            $table->string('address')->nullable();
+            $table->string('cabang')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

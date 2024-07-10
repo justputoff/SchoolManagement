@@ -24,10 +24,8 @@ class TeacherController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:teachers,email',
         ]);
 
         Teacher::create($request->all());
@@ -47,10 +45,8 @@ class TeacherController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:teachers,email,' . $id,
         ]);
 
         $teacher = Teacher::findOrFail($id);

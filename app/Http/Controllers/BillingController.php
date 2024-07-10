@@ -98,6 +98,8 @@ class BillingController extends Controller
             'payment_method' => 'required|string',
             'status' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf',
+            'description' => 'nullable|string',
+            'type' => 'required|string',
         ]);
 
         $billing = Billing::findOrFail($billingId);
@@ -132,6 +134,8 @@ class BillingController extends Controller
             'payment_method' => 'required|string',
             'status' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf',
+            'description' => 'nullable|string',
+            'type' => 'required|string',
         ]);
 
         $payment = Payment::findOrFail($paymentId);

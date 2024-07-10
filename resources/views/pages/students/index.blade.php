@@ -18,7 +18,6 @@
                         <th class="text-white">Name</th>
                         <th class="text-white">Email</th>
                         <th class="text-white">Cabang</th>
-                        <th class="text-white">User</th>
                         <th class="text-white">Address</th>
                         <th class="text-white">Phone</th>
                         <th class="text-white">Packages</th>
@@ -29,10 +28,9 @@
                     @foreach ($students as $student)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $student->name }}</td>
-                        <td>{{ $student->email }}</td>
-                        <td>{{ $student->cabang ?? '-' }}</td>
                         <td>{{ $student->user->name }}</td>
+                        <td>{{ $student->user->email }}</td>
+                        <td>{{ $student->cabang ?? '-' }}</td>
                         <td>{{ $student->address }}</td>
                         <td>{{ $student->phone }}</td>
                         <td>

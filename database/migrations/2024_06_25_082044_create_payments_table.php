@@ -19,9 +19,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->decimal('amount', 8, 2);
             $table->date('payment_date');
+            $table->enum('type', ['book', 'registration', 'tuition fee']);
             $table->string('status')->default('pending'); // pending, completed, failed
             $table->string('payment_proof')->nullable(); // URL or path to payment proof
-            $table->string('payment_method')->nullable();
+            $table->enum('payment_method', ['cash','bank_transfer'])->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

@@ -8,18 +8,21 @@
         <div class="card-body">
             <form action="{{ route('students.store') }}" method="POST">
                 @csrf
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" required>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label for="cabang" class="form-label">Cabang</label>
-                    <input type="text" class="form-control" id="cabang" name="cabang" required>
+                    <select class="form-control" id="cabang" name="cabang" required>
+                        <option value="PASAR-AMBACANG">PASAR-AMBACANG</option>
+                        <option value="MATA-AIR">MATA-AIR</option>
+                    </select>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label for="user_id" class="form-label">User</label>
                     <select class="form-control" id="user_id" name="user_id" required>

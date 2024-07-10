@@ -74,7 +74,7 @@
                 </a>
               </li>
               <!-- Billings -->
-              <li class="menu-item {{ Route::is(['billings*', 'payments*', 'transactions*']) ? 'active' : '' }}">
+              <li class="menu-item {{ Route::is(['billings*', 'payments*']) ? 'active' : '' }}">
                 <a href="{{ route('billings.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Billings</div>
@@ -85,6 +85,13 @@
                 <a href="{{ route('registration.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-file"></i>
                   <div data-i18n="Analytics">Registration</div>
+                </a>
+              </li>
+              <!-- Transactions -->
+              <li class="menu-item {{ Route::is('transactions*') ? 'active' : '' }}">
+                <a href="{{ route('transactions.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-receipt"></i>
+                  <div data-i18n="Analytics">Transactions</div>
                 </a>
               </li>
               @elseif (Auth::user()->role->name == 'cashier')
@@ -110,10 +117,24 @@
                 </a>
               </li>
               <!-- Billings -->
-              <li class="menu-item {{ Route::is(['billings*', 'payments*', 'transactions*']) ? 'active' : '' }}">
+              <li class="menu-item {{ Route::is(['billings*', 'payments*']) ? 'active' : '' }}">
                 <a href="{{ route('billings.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Billings</div>
+                </a>
+              </li>
+              <!-- Registration -->
+              <li class="menu-item {{ Route::is('registration*') ? 'active' : '' }}">
+                <a href="{{ route('registration.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-file"></i>
+                  <div data-i18n="Analytics">Registration</div>
+                </a>
+              </li>
+              <!-- Transactions -->
+              <li class="menu-item {{ Route::is('transactions*') ? 'active' : '' }}">
+                <a href="{{ route('transactions.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-receipt"></i>
+                  <div data-i18n="Analytics">Transactions</div>
                 </a>
               </li>
               @endif

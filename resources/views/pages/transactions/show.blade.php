@@ -105,42 +105,43 @@
             <div class="col-4 text-end">
                 <div class="">
                     <span class="fw-bold">FAKTUR </span> <br>
-                    <span class="fst-italic">#INV{{ str_pad($billing->id, 3, '0', STR_PAD_LEFT) }} </span> <br>
+                    <span class="fst-italic">#INV{{ str_pad($transaction->id, 3, '0', STR_PAD_LEFT) }} </span> <br>
                     <span style="font-size: 14px">
-                        Tanggal: {{ date('d - F -Y', strtotime($billing->payment_date)) }} <br>
-                        Jatuh Tempo: {{ date('d - F - Y', strtotime($billing->due_date)) }}
+                        Tanggal: {{ date('d - F -Y', strtotime($transaction->transaction_date)) }} <br>
                     </span>
                 </div>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <span class="fw-bold">Pelanggan: {{ $billing->user->name }}</span> <br>
+                <span class="fw-bold">Pelanggan: {{ $transaction->student->user->name }}</span> <br>
                 Jl. Sisingamangaraja No. 69 Simpang Haru <br>
-                {{ $billing->user->student->phone ?? 'N / A' }}
+                {{ $transaction->student->user->phone ?? 'N / A' }}
             </div>
         </div>
         <div class="">
-            <table class="table" style="font-size: 12px">
+            <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Package</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Harga</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Admin</th>
                     <th scope="col">Di Bayar</th>
+                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($billing->payments->where('status', 'Success') as $payment)
+                    @foreach ($transaction->details as $detail)
                     <tr>
-                      <td>{{ $billing->package->name }} - {{ $billing->package->type }}</td>
-                      <td>{{ $payment->description }}</td>
-                      <td>Rp. {{ number_format($billing->amount, 0, ',', '.') }}</td>
-                      <td>{{ date('d - F - Y', strtotime($payment->payment_date)) }}</td>
-                      <td>{{ $payment->user->name ?? 'N / A' }}</td>
-                      <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
+                      <td>{{ $detail->type }}</td>
+                      <td>{{ $detail->description }}</td>
+                      <td>Rp. {{ number_format($detail->amount, 0, ',', '.') }}</td>
+                      <td>{{ date('d - F - Y', strtotime($transaction->transaction_date)) }}</td>
+                      <td>{{ $transaction->user->name ?? 'N / A' }}</td>
+                      <td>Rp. {{ number_format($detail->amount, 0, ',', '.') }}</td>
+                      <td>{{ $detail->status }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -154,7 +155,6 @@
                 </p>
                 <p style="font-size: 16px">
                     Info Pembayaran: <br>
-                    By check: pembayaran jatuh tempo selanjutnya {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
                     Transfer Bank: 066901001096565 <br>
                     Lainnya: Bank BRI <br>
                     PT. Intents Education Solution
@@ -163,13 +163,13 @@
             <div class="col-6" style="font-size: 20px">
                 <p>
                     @php
-                        $total = $billing->payments->where('status', 'Success')->sum('amount');
+                        $total = $transaction->details->where('status', 'paid')->sum('amount');
                     @endphp
                     <span class="fw-bold">Total</span> Rp{{ number_format($total, 0, ',', '.') }}<br>
                 </p>
                 <hr>
                 <p>
-                    Dibayar Rp{{ number_format($billing->payments->where('status', 'Success')->sum('amount'), 0, ',', '.') }} / Rp{{ number_format($billing->amount, 0, ',', '.') }} 
+                    Dibayar Rp{{ number_format($total, 0, ',', '.') }} / Rp{{ number_format($transaction->amount, 0, ',', '.') }} 
                 </p>
             </div>
         </div>

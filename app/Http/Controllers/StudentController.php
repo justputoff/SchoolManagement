@@ -34,19 +34,22 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email',
+            // 'name' => 'required|string|max:255',
+            // 'email' => 'required|email|unique:students,email',
             'user_id' => 'required|exists:users,id',
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'package_id' => 'required|array',
+            'package_id' => 'nullable|array',
             'package_id.*' => 'exists:packages,id',
             'cabang' => 'required|string|max:255',
         ]);
 
-        $student = Student::create($request->only('name', 'email', 'user_id', 'address', 'phone', 'cabang'));
-        foreach ($request->package_id as $index => $packageId) {
-            $student->packages()->attach($packageId, ['status' => 'active']);
+        $student = Student::create($request->only('user_id', 'address', 'phone', 'cabang'));
+
+        if ($request->package_id) {
+            foreach ($request->package_id as $index => $packageId) {
+                $student->packages()->attach($packageId, ['status' => 'active']);
+            }
         }
 
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
@@ -68,25 +71,27 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email,' . $student->id,
+            // 'name' => 'required|string|max:255',
+            // 'email' => 'required|email|unique:students,email,' . $student->id,
             'user_id' => 'required|exists:users,id',
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'package_id' => 'required|array',
+            'package_id' => 'nullable|array',
             'package_id.*' => 'exists:packages,id',
             'status' => 'required|array',
             'status.*' => 'in:active,inactive',
             'cabang' => 'required|string|max:255',
         ]);
 
-        $student->update($request->only('name', 'email', 'user_id', 'address', 'phone', 'cabang'));
+        $student->update($request->only('user_id', 'address', 'phone', 'cabang'));
 
         // Sync packages with status
         $syncData = [];
-        foreach ($request->package_id as $packageId) {
-            if (isset($request->status[$packageId])) {
-                $syncData[$packageId] = ['status' => $request->status[$packageId]];
+        if ($request->package_id) {
+            foreach ($request->package_id as $packageId) {
+                if (isset($request->status[$packageId])) {
+                    $syncData[$packageId] = ['status' => $request->status[$packageId]];
+                }
             }
         }
         $student->packages()->sync($syncData);

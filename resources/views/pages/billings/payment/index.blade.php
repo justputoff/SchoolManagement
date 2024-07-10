@@ -20,6 +20,8 @@
                             <th class="text-white">Payment Date</th>
                             <th class="text-white">Amount</th>
                             <th class="text-white">Payment Method</th>
+                            <th class="text-white">Description</th>
+                            <th class="text-white">Type</th>
                             <th class="text-white">Status</th>
                             <th class="text-white">Payment Proof</th>
                             <th class="text-white">Actions</th>
@@ -29,11 +31,13 @@
                         @foreach ($billing->payments as $payment)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $payment->student->name }}</td>
+                            <td>{{ $payment->student->user->name }}</td>
                             <td>{{ $payment->package->name }}</td>
                             <td>{{ $payment->payment_date }}</td>
                             <td>Rp {{ number_format($payment->amount, 2, ',', '.') }}</td>
                             <td>{{ $payment->payment_method }}</td>
+                            <td>{{ $payment->description }}</td>
+                            <td>{{ $payment->type }}</td>
                             <td>{{ $payment->status }}</td>
                             <td>
                                 @if($payment->payment_proof)

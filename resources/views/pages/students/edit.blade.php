@@ -9,18 +9,21 @@
             <form action="{{ route('students.update', $student->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $student->name }}" required>
-                </div>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $student->user->name }}" required>
+                </div> --}}
                 <div class="mb-3">
                     <label for="cabang" class="form-label">Cabang</label>
-                    <input type="text" class="form-control" id="cabang" name="cabang" value="{{ $student->cabang }}" required>
+                    <select class="form-control" id="cabang" name="cabang" required>
+                        <option value="PASAR-AMBACANG" {{ $student->cabang == 'PASAR-AMBACANG' ? 'selected' : '' }}>PASAR-AMBACANG</option>
+                        <option value="MATA-AIR" {{ $student->cabang == 'MATA-AIR' ? 'selected' : '' }}>MATA-AIR</option>
+                    </select>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ $student->email }}" required>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label for="user_id" class="form-label">User</label>
                     <select class="form-control" id="user_id" name="user_id" required>
