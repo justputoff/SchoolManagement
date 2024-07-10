@@ -133,7 +133,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transaction->details as $detail)
+                    @foreach ($transaction->transactionDetails as $detail)
                     <tr>
                       <td>{{ $detail->type }}</td>
                       <td>{{ $detail->description }}</td>
@@ -163,7 +163,7 @@
             <div class="col-6" style="font-size: 20px">
                 <p>
                     @php
-                        $total = $transaction->details->where('status', 'paid')->sum('amount');
+                        $total = $transaction->transactionDetails->where('status', 'paid')->sum('amount');
                     @endphp
                     <span class="fw-bold">Total</span> Rp{{ number_format($total, 0, ',', '.') }}<br>
                 </p>

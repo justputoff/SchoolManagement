@@ -49,6 +49,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('transactions.edit', $transaction->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('transactions.show', $transaction->id) }}" target="_blank" class="btn btn-secondary btn-sm">Print Invoice</a>
                                 <form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')

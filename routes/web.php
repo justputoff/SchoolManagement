@@ -115,6 +115,7 @@ Route::middleware('auth')->group(function () {
     Route::get('transactions/{transaction}/edit', [TransactionController::class, 'edit'])->name('transactions.edit');
     Route::put('transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');
     Route::delete('transactions/{transaction}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+    Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
 });
 
 
