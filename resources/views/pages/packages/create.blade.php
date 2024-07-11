@@ -22,15 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="level" class="form-label">Level</label>
-                    <select class="form-control" id="level" name="level" required>
-                        <option value="Calistung">Calistung</option>
-                        <option value="Bimbel SD">Bimbel SD</option>
-                        <option value="Bimbel SMP">Bimbel SMP</option>
-                        <option value="Bimbel SMA">Bimbel SMA</option>
-                        <option value="General Upper">General Upper</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="General Advance">General Advance</option>
-                    </select>
+                    <input type="text" class="form-control" id="level" name="level" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>

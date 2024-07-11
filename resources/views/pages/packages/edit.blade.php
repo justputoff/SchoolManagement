@@ -23,12 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="level" class="form-label">Level</label>
-                    <select class="form-control" id="level" name="level" required>
-                        <option value="Calistung" {{ $package->level == 'Calistung' ? 'selected' : '' }}>Calistung</option>
-                        <option value="Bimbel SD" {{ $package->level == 'Bimbel SD' ? 'selected' : '' }}>Bimbel SD</option>
-                        <option value="Bimbel SMP" {{ $package->level == 'Bimbel SMP' ? 'selected' : '' }}>Bimbel SMP</option>
-                        <option value="Bimbel SMA" {{ $package->level == 'Bimbel SMA' ? 'selected' : '' }}>Bimbel SMA</option>
-                    </select>
+                    <input type="text" class="form-control" id="level" name="level" value="{{ $package->level }}" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -37,9 +32,10 @@
                 <div class="mb-3">
                     <label for="prices" class="form-label">Prices</label>
                     @foreach ($package->prices as $price)
-                        <div class="input-group mb-2">
+                        <div class="input-group mb-2" id="price-{{ $loop->index }}">
                             <input type="text" class="form-control" name="durations[]" value="{{ $price->duration }}" placeholder="Duration (e.g., 1 bulan)" required>
                             <input type="number" class="form-control" name="prices[]" value="{{ $price->price }}" placeholder="Price" required>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="removePriceField({{ $loop->index }})">Remove</button>
                         </div>
                     @endforeach
                     <div id="additional-prices"></div>
@@ -55,13 +51,22 @@
 <script>
 function addPriceField() {
     const additionalPrices = document.getElementById('additional-prices');
+    const index = document.querySelectorAll('.input-group').length;
     const priceField = `
-        <div class="input-group mb-2">
+        <div class="input-group mb-2" id="price-${index}">
             <input type="text" class="form-control" name="durations[]" placeholder="Duration (e.g., 2 bulan)" required>
             <input type="number" class="form-control" name="prices[]" placeholder="Price" required>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removePriceField(${index})">Remove</button>
         </div>
     `;
     additionalPrices.insertAdjacentHTML('beforeend', priceField);
+}
+
+function removePriceField(index) {
+    const priceField = document.getElementById(`price-${index}`);
+    if (priceField) {
+        priceField.remove();
+    }
 }
 </script>
 @endsection
