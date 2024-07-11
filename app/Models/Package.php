@@ -17,4 +17,9 @@ class Package extends Model
     {
         return $this->hasMany(PackagePrice::class);
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
 }

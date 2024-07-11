@@ -19,4 +19,14 @@ class Student extends Model
     {
         return $this->belongsToMany(Package::class, 'student_packages')->withPivot('status');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
