@@ -56,7 +56,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="payment_proof" class="form-label">Payment Proof</label>
-                    <input type="file" class="form-control" id="payment_proof" name="payment_proof" required>
+                    <input type="file" class="form-control" id="payment_proof" name="payment_proof">
                 </div>
                 <button type="submit" class="btn btn-primary">Add Payment</button>
             </form>
