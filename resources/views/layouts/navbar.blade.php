@@ -87,13 +87,13 @@
                   <div data-i18n="Analytics">Registration</div>
                 </a>
               </li>
-              <!-- Transactions -->
+              {{-- <!-- Transactions -->
               <li class="menu-item {{ Route::is('transactions*') ? 'active' : '' }}">
                 <a href="{{ route('transactions.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Transactions</div>
                 </a>
-              </li>
+              </li> --}}
               @elseif (Auth::user()->role->name == 'cashier')
               <!-- Users -->
               <li class="menu-item {{ Route::is('users*') ? 'active' : '' }}">
@@ -130,13 +130,13 @@
                   <div data-i18n="Analytics">Registration</div>
                 </a>
               </li>
-              <!-- Transactions -->
+              {{-- <!-- Transactions -->
               <li class="menu-item {{ Route::is('transactions*') ? 'active' : '' }}">
                 <a href="{{ route('transactions.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-receipt"></i>
                   <div data-i18n="Analytics">Transactions</div>
                 </a>
-              </li>
+              </li> --}}
               @endif
             </ul>
           </aside>
