@@ -15,6 +15,7 @@
                 <thead>
                     <tr class="text-nowrap table-dark">
                         <th class="text-white">No</th>
+                        <th class="text-white">No Invoice</th>
                         <th class="text-white">User</th>
                         <th class="text-white">Cabang</th>
                         <th class="text-white">Package</th>
@@ -31,6 +32,7 @@
                     @foreach ($billings as $billing)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ str_pad($billing->id, 3, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $billing->user->name }}</td>
                         <td>{{ $billing->user->student->cabang ?? 'N / A' }}</td>
                         <td>{{ $billing->package->name }} - {{ $billing->package->type }}</td>
