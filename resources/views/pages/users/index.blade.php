@@ -36,6 +36,7 @@
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                 </form>
+                <a href="{{ route('users.billing', $user->id) }}" class="btn btn-primary btn-sm">Billing</a>
               </td>
             @else
               <td>
