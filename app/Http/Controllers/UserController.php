@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
+use App\Models\Package;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -73,5 +75,12 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
+    }
+
+    public function userBilling($id)
+    {
+        $user = User::findOrFail($id);
+        $packages = Package::all();
+        return view('pages.users.billing', compact('user', 'packages'));
     }
 }

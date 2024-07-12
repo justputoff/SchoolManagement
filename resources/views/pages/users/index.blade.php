@@ -18,9 +18,7 @@
             <th class="text-white">Name</th>
             <th class="text-white">Email</th>
             <th class="text-white">Role</th>
-            @if (Auth::user()->role->name == 'admin')
-              <th class="text-white">Actions</th>
-            @endif
+            <th class="text-white">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +36,10 @@
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                 </form>
+              </td>
+            @else
+              <td>
+                <a href="{{ route('users.billing', $user->id) }}" class="btn btn-primary btn-sm">Billing</a>
               </td>
             @endif
           </tr>
