@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('type', ['book', 'registration', 'tuition fee']);
             $table->string('status')->default('pending'); // pending, completed, failed
             $table->string('payment_proof')->nullable(); // URL or path to payment proof
-            $table->enum('payment_method', ['cash','bank_transfer'])->nullable();
+            $table->enum('payment_method', ['cash','bank_transfer','qris'])->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
