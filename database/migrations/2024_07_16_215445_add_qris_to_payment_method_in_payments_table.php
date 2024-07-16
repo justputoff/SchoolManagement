@@ -24,7 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Revert the column to its original ENUM type
-        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE ENUM('cash', 'bank_transfer') USING payment_method::ENUM");
+        // Revert the column to its original state
+        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255) USING payment_method::VARCHAR");
+
+        // Optionally, you can add the original constraint back if needed
+        DB::statement("ALTER TABLE payments ADD CONSTRAINT payment_method_check CHECK (payment_method IN ('cash', 'bank_transfer'))");
     }
 };
