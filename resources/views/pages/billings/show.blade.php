@@ -116,7 +116,7 @@
         <div class="row mt-4">
             <div class="col-12">
                 <span class="fw-bold">Pelanggan: {{ $billing->user->name }}</span> <br>
-                Jl. Sisingamangaraja No. 69 Simpang Haru <br>
+                {{ $billing->user->student->address ?? 'N / A' }} <br>
                 {{ $billing->user->student->phone ?? 'N / A' }}
             </div>
         </div>

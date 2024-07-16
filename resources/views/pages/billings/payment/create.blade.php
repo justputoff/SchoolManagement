@@ -52,6 +52,7 @@
                     <select class="form-control" id="payment_method" name="payment_method" required>
                         <option value="cash">Cash</option>
                         <option value="bank_transfer">Bank Transfer</option>
+                        <option value="qris">Qris</option>
                     </select>
                 </div>
                 <div class="mb-3">
