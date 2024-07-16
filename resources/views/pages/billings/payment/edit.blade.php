@@ -33,6 +33,7 @@
                     <select class="form-control" id="payment_method" name="payment_method" required>
                         <option value="cash" {{ $payment->payment_method == 'cash' ? 'selected' : '' }}>Cash</option>
                         <option value="bank_transfer" {{ $payment->payment_method == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                        <option value="qris" {{ $payment->payment_method == 'qris' ? 'selected' : '' }}>Qris</option>
                     </select>
                 </div>
                 <div class="mb-3">
