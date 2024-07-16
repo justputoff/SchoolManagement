@@ -20,7 +20,7 @@ return new class extends Migration
         DB::statement('ALTER TABLE payments DROP CONSTRAINT IF EXISTS payment_method_check');
 
         // Alter the column to add the new value
-        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255)");
+        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255) USING payment_method::VARCHAR");
         DB::statement("ALTER TABLE payments ADD CONSTRAINT payment_method_check CHECK (payment_method IN ('cash', 'bank_transfer', 'qris'))");
     }
 
@@ -33,7 +33,7 @@ return new class extends Migration
         DB::statement('ALTER TABLE payments DROP CONSTRAINT IF EXISTS payment_method_check');
 
         // Revert the column to the original values
-        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255)");
+        DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255) USING payment_method::VARCHAR");
         DB::statement("ALTER TABLE payments ADD CONSTRAINT payment_method_check CHECK (payment_method IN ('cash', 'bank_transfer'))");
     }
 };
