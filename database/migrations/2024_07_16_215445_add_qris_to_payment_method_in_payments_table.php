@@ -12,10 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Drop the existing constraint if it exists
+        // Update existing rows to ensure they comply with the new constraint
+        DB::table('payments')->whereNotIn('payment_method', ['cash', 'bank_transfer', 'qris'])
+            ->update(['payment_method' => 'cash']); // or any default value
+
+        // Drop the existing constraint
         DB::statement('ALTER TABLE payments DROP CONSTRAINT IF EXISTS payment_method_check');
 
-        // Alter the column to change its type to VARCHAR
+        // Alter the column to add the new value
         DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255) USING payment_method::VARCHAR");
 
         // Add the new constraint
@@ -27,13 +31,17 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Drop the existing constraint if it exists
+        // Update existing rows to ensure they comply with the old constraint
+        DB::table('payments')->where('payment_method', 'qris')
+            ->update(['payment_method' => 'cash']); // or any default value
+
+        // Drop the existing constraint
         DB::statement('ALTER TABLE payments DROP CONSTRAINT IF EXISTS payment_method_check');
 
-        // Revert the column to its original state
+        // Revert the column to the original values
         DB::statement("ALTER TABLE payments ALTER COLUMN payment_method TYPE VARCHAR(255) USING payment_method::VARCHAR");
 
-        // Optionally, you can add the original constraint back if needed
+        // Add the old constraint
         DB::statement("ALTER TABLE payments ADD CONSTRAINT payment_method_check CHECK (payment_method IN ('cash', 'bank_transfer'))");
     }
 };
