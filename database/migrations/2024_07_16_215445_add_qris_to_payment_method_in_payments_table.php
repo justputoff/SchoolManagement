@@ -12,6 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Update existing rows to ensure they comply with the new constraint
+        DB::table('payments')->whereNotIn('payment_method', ['cash', 'bank_transfer', 'qris'])
+            ->update(['payment_method' => 'cash']); // or any default value
+
         // Drop the existing constraint
         DB::statement('ALTER TABLE payments DROP CONSTRAINT IF EXISTS payment_method_check');
 
