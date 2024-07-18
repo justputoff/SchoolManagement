@@ -12,7 +12,7 @@ use Exception;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::with('role')->get();
+        $users = User::with(['role', 'packages'])->get();
         return response()->json([
             'data' => $users,
             'message' => 'success',
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
     
     public function show(){
-        $user = User::with('role')->find(Auth::user()->id);
+        $user = User::with(['role','student.packages', 'billings', 'student.payments'])->find(Auth::user()->id);
         return response()->json([
             'data' => $user,
             'message' => 'success',
