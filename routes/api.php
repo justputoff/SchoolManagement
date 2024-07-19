@@ -25,7 +25,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subjects', [SubjectController::class, 'index']);
     Route::get('/schedules', [ScheduleController::class, 'index']);
     Route::get('/billings', [BillingController::class, 'index']);
-    Route::get('/schedules', [ScheduleController::class, 'index']);
     Route::get('/students', [StudentController::class, 'index']);
     Route::put('/student/{id}', [StudentController::class, 'update']);
 });
