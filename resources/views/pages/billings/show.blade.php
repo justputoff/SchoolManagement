@@ -70,7 +70,7 @@
       .paid-stamp {
         position: absolute;
         top: 50%;
-        left: 30%;
+        left: 50%;
         transform: translate(-50%, -50%);
         color: red;
         font-size: 80px;
@@ -78,7 +78,7 @@
         border: 15px solid red;
         padding: 20px;
         border-radius: 10px;
-        transform: rotate(-30deg) translate(-10%, -90%);
+        transform: rotate(-30deg) translate(-50%, -70%);
         opacity: 0.5;
         z-index: 1000;
       }
@@ -116,12 +116,11 @@
         <div class="row mt-4">
             <div class="col-12">
                 <span class="fw-bold">Pelanggan: {{ $billing->user->name }}</span> <br>
-                {{ $billing->user->student->address ?? 'N / A' }} <br>
-                {{ $billing->user->student->phone ?? 'N / A' }}
+                {{ $billing->user->student->address ?? 'N / A' }}  | {{ $billing->user->student->phone ?? 'N / A' }}
             </div>
         </div>
         <div class="">
-            <table class="table" style="font-size: 12px">
+            <table class="table table-sm" style="font-size: 10px">
                 <thead>
                   <tr>
                     <th scope="col">Package</th>
@@ -147,20 +146,18 @@
               </table>
         </div>
         <div class="row">
-            <div class="col-6">
-                <p style="font-size: 14px" class="fst-italic">
+            <div class="col-8">
+                <p style="font-size: 12px" class="fst-italic">
                     Terima kasih atas kepercayaannya. <br>
                     Semoga bapak/ibu sehat selalu
                 </p>
-                <p style="font-size: 16px">
-                    Info Pembayaran: <br>
-                    By check: pembayaran jatuh tempo selanjutnya {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
-                    Transfer Bank: 066901001096565 <br>
-                    Lainnya: Bank BRI <br>
+                <p style="font-size: 12px">
+                    pembayaran selanjutnya {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
+                    Transfer Bank: 066901001096565 Lainnya: Bank BRI <br>
                     PT. Intents Education Solution
                 </p>
             </div>
-            <div class="col-6" style="font-size: 20px">
+            <div class="col-4" style="font-size: 12px">
                 <p>
                     @php
                         $total = $billing->payments->where('status', 'Success')->sum('amount');
