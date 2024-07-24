@@ -31,14 +31,14 @@
       }
 
       @page {
-        size: 24cm 14cm; /* Adjusted for 24x14 cm paper */
+        size: 14cm 24cm; /* Adjusted for 14x24 cm paper in portrait */
         margin: 0;
       }
 
       .page {
-        width: 24cm;
-        height: 14cm;
-        padding: 5mm;
+        width: 14cm;
+        height: 24cm;
+        padding: 5mm; /* Mengurangi padding */
         margin: 0 auto;
         border: 1px #D3D3D3 solid;
         border-radius: 5px;
@@ -51,8 +51,8 @@
   
         html,
         body {
-          width: 24cm; /* Adjusted for 24x14 cm paper */
-          height: 14cm; /* Adjusted for 24x14 cm paper */
+          width: 14cm; /* Adjusted for 14x24 cm paper in portrait */
+          height: 24cm; /* Adjusted for 14x24 cm paper in portrait */
         }
   
         .page {
@@ -73,10 +73,10 @@
         left: 50%;
         transform: translate(-50%, -50%);
         color: red;
-        font-size: 60px;
+        font-size: 60px; /* Mengurangi ukuran font */
         font-weight: bold;
-        border: 10px solid red;
-        padding: 10px;
+        border: 10px solid red; /* Mengurangi ukuran border */
+        padding: 10px; /* Mengurangi padding */
         border-radius: 10px;
         transform: rotate(-30deg) translate(-50%, -70%);
         opacity: 0.5;
@@ -88,7 +88,7 @@
     <div class="page">
         <div class="paid-stamp">PAID</div>
         <div class="row">
-            <div class="col-2 card p-1">
+            <div class="col-2 card p-1" style="height: 100px">
                 <img src="{{ asset('assets/img/logo-intents.jpg') }}" style="max-width: 160px" alt="">
             </div>
             <div class="col-6">
