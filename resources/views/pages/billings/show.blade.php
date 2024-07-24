@@ -21,7 +21,7 @@
         margin: 0;
         padding: 0;
         background-color: #FAFAFA;
-        font: 12pt;
+        font: 10pt;
         font-family: 'Public Sans', sans-serif;
       }
   
@@ -31,15 +31,15 @@
       }
 
       @page {
-        size: A4;
+        size: 24cm 14cm; /* Adjusted for 24x14 cm paper */
         margin: 0;
       }
 
       .page {
-        width: 210mm;
-        min-height: 297mm;
-        padding: 15mm;
-        margin: 10mm auto;
+        width: 24cm;
+        height: 14cm;
+        padding: 5mm;
+        margin: 0 auto;
         border: 1px #D3D3D3 solid;
         border-radius: 5px;
         background: white;
@@ -51,8 +51,8 @@
   
         html,
         body {
-          width: 210mm;
-          height: 297mm;
+          width: 24cm; /* Adjusted for 24x14 cm paper */
+          height: 14cm; /* Adjusted for 24x14 cm paper */
         }
   
         .page {
@@ -60,7 +60,7 @@
           border: initial;
           border-radius: initial;
           width: initial;
-          min-height: initial;
+          height: initial;
           box-shadow: initial;
           background: initial;
           page-break-after: always;
@@ -73,10 +73,10 @@
         left: 50%;
         transform: translate(-50%, -50%);
         color: red;
-        font-size: 80px;
+        font-size: 60px;
         font-weight: bold;
-        border: 15px solid red;
-        padding: 20px;
+        border: 10px solid red;
+        padding: 10px;
         border-radius: 10px;
         transform: rotate(-30deg) translate(-50%, -70%);
         opacity: 0.5;
@@ -88,10 +88,10 @@
     <div class="page">
         <div class="paid-stamp">PAID</div>
         <div class="row">
-            <div class="col-3 card p-1">
+            <div class="col-2 card p-1">
                 <img src="{{ asset('assets/img/logo-intents.jpg') }}" style="max-width: 160px" alt="">
             </div>
-            <div class="col-5">
+            <div class="col-6">
                 <div class="">
                     <span class="fw-bold" style="font-size: 15px">PT. INTENTS EDUCATION SOLUTION </span> <br>
                     <span style="font-size: 13px">
