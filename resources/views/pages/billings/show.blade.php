@@ -31,13 +31,13 @@
       }
 
       @page {
-        size: 14cm 24cm; /* Adjusted for 14x24 cm paper in portrait */
+        size: 12cm 22cm; /* Adjusted for 14x24 cm paper in portrait */
         margin: 0;
       }
 
       .page {
-        width: 14cm;
-        height: 24cm;
+        width: 12cm;
+        height: 22cm;
         padding: 5mm; /* Mengurangi padding */
         margin: 0 auto;
         border: 1px #D3D3D3 solid;
@@ -93,8 +93,8 @@
             </div>
             <div class="col-6">
                 <div class="">
-                    <span class="fw-bold" style="font-size: 15px">PT. INTENTS EDUCATION SOLUTION </span> <br>
-                    <span style="font-size: 13px">
+                    <span class="fw-bold" style="font-size: 11px">PT. INTENTS EDUCATION SOLUTION </span> <br>
+                    <span style="font-size: 10px">
                         Jl. Dr. Moh. Hatta No.23 Jalan Tunggang <br>
                         Ps. Ambacang kec. Kuranji kota Padang <br>
                         082388059016 <br>
@@ -106,7 +106,7 @@
                 <div class="">
                     <span class="fw-bold">FAKTUR </span> <br>
                     <span class="fst-italic">#INV{{ str_pad($billing->id, 3, '0', STR_PAD_LEFT) }} </span> <br>
-                    <span style="font-size: 14px">
+                    <span style="font-size: 10px">
                         Tanggal: {{ date('d - F -Y', strtotime($billing->payment_date)) }} <br>
                         Jatuh Tempo: {{ date('d - F - Y', strtotime($billing->due_date)) }}
                     </span>
@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-12">
+            <div class="col-12" style="font-size: 12px">
                 <span class="fw-bold">Pelanggan: {{ $billing->user->name }}</span> <br>
                 {{ $billing->user->student->address ?? 'N / A' }}  | {{ $billing->user->student->phone ?? 'N / A' }}
             </div>
@@ -147,17 +147,17 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <p style="font-size: 12px" class="fst-italic">
+                <p style="font-size: 10px" class="fst-italic">
                     Terima kasih atas kepercayaannya. <br>
                     Semoga bapak/ibu sehat selalu
                 </p>
-                <p style="font-size: 12px">
+                <p style="font-size: 10px">
                     pembayaran selanjutnya {{ date('d - F - Y', strtotime($billing->due_date)) }} jam 17:00 <br>
                     Transfer Bank: 066901001096565 Lainnya: Bank BRI <br>
                     PT. Intents Education Solution
                 </p>
             </div>
-            <div class="col-4" style="font-size: 12px">
+            <div class="col-4" style="font-size: 10px">
                 <p>
                     @php
                         $total = $billing->payments->where('status', 'Success')->sum('amount');
