@@ -14,60 +14,80 @@
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet"
     /> 
-    <style>
-        body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #FAFAFA;
-        font: 10pt;
-        font-family: 'Public Sans', sans-serif;
-      }
-  
-      * {
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-      }
 
-      @page {
-        size: 12cm 22cm; /* Adjusted for 14x24 cm paper in portrait */
-        margin: 0;
+<style>
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #FAFAFA;
+      font: 12pt "Times New Roman";
+    }
+
+    * {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm;
+      margin: 10mm auto;
+      border: 1px #D3D3D3 solid;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .subpage {
+      padding: 1cm;
+      border: 5px red solid;
+      height: 257mm;
+      outline: 2cm #FFEAEA solid;
+    }
+    
+    td {
+      padding-top: 5px;
+    }
+
+    .borderhr {
+      color: black;
+      background-color: black;
+      border-color: black;
+      height: 5px;
+      opacity: 100;
+    }
+    
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+
+      html,
+      body {
+        width: 210mm;
+        height: 297mm;
       }
 
       .page {
-        width: 12cm;
-        height: 22cm;
-        padding: 5mm; /* Mengurangi padding */
-        margin: 0 auto;
-        border: 1px #D3D3D3 solid;
-        border-radius: 5px;
-        background: white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        position: relative;
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
       }
-  
-      @media print {
-  
-        html,
-        body {
-          width: 14cm; /* Adjusted for 14x24 cm paper in portrait */
-          height: 24cm; /* Adjusted for 14x24 cm paper in portrait */
-        }
-  
-        .page {
-          margin: 0;
-          border: initial;
-          border-radius: initial;
-          width: initial;
-          height: initial;
-          box-shadow: initial;
-          background: initial;
-          page-break-after: always;
-        }
-      }
+    }
 
-      .paid-stamp {
+    .paid-stamp {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -82,7 +102,7 @@
         opacity: 0.5;
         z-index: 1000;
       }
-    </style>
+  </style>
 </head>
 <body onload="window.print()">
     <div class="page">
