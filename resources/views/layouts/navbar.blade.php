@@ -130,13 +130,6 @@
                   <div data-i18n="Analytics">Registration</div>
                 </a>
               </li>
-              <!-- Reports -->
-              <li class="menu-item {{ Route::is('reports*') ? 'active' : '' }}">
-                <a href="{{ route('reports.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-receipt"></i>
-                  <div data-i18n="Analytics">Reports</div>
-                </a>
-              </li>
               {{-- <!-- Transactions -->
               <li class="menu-item {{ Route::is('transactions*') ? 'active' : '' }}">
                 <a href="{{ route('transactions.index') }}" class="menu-link">
@@ -145,6 +138,13 @@
                 </a>
               </li> --}}
               @endif
+              <!-- Reports -->
+              <li class="menu-item {{ Route::is('reports*') ? 'active' : '' }}">
+                <a href="{{ route('reports.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-receipt"></i>
+                  <div data-i18n="Analytics">Reports</div>
+                </a>
+              </li>
             </ul>
           </aside>
           <!-- / Menu -->
