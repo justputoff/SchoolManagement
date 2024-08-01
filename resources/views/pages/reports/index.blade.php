@@ -24,7 +24,7 @@
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $payment->student->user->name  }}</td>
             <td>{{ $payment->package->name }}</td>
-            <td>{{ number_format($payment->amount, 0, ',', '.') }}</td>
+            <td>{{ number_format($payment->amount, 0, ',', ',') }}</td>
             <td>{{ $payment->payment_date }}</td>
             <td>{{ ucfirst($payment->status) }}</td>
             <td>{{ ucfirst($payment->payment_method) }}</td>
