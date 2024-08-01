@@ -139,12 +139,26 @@
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    @if (Route::is('reports.index'))
+    <script>
+      $(document).ready(function () {
+          $('#example').DataTable({
+            layout: {
+                topStart: {
+                    buttons: ['excelHtml5', 'csvHtml5', 'pdfHtml5']
+                }
+            }
+          });
+      });
+    </script>
+    @else
     <script>
       $(document).ready(function () {
           $('#example').DataTable({
           });
       });
     </script>
+    @endif
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
