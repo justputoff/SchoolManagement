@@ -22,7 +22,7 @@
           @foreach ($payments as $payment)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
-            <td>{{ $payment->student->name }}</td>
+            <td>{{ $payment->student->user->name  }}</td>
             <td>{{ $payment->package->name }}</td>
             <td>{{ number_format($payment->amount, 0, ',', '.') }}</td>
             <td>{{ $payment->payment_date }}</td>
