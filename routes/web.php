@@ -11,6 +11,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -117,6 +118,9 @@ Route::middleware('auth')->group(function () {
     Route::put('transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');
     Route::delete('transactions/{transaction}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
     Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
+
+    //Report routes
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 });
 
 
