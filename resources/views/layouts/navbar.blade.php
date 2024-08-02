@@ -145,13 +145,6 @@
                 </a>
               </li> --}}
               @endif
-              <!-- Reports -->
-              <li class="menu-item {{ Route::is('reports*') ? 'active' : '' }}">
-                <a href="{{ route('reports.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-receipt"></i>
-                  <div data-i18n="Analytics">Reports</div>
-                </a>
-              </li>
             </ul>
           </aside>
           <!-- / Menu -->
