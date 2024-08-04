@@ -15,11 +15,11 @@
                 <thead>
                     <tr class="text-nowrap table-dark">
                         <th class="text-white">No</th>
-                        <th class="text-white">Tanggal</th>
+                        <th class="text-white">Tanggal Presensi</th>
                         <th class="text-white">Nama Pengambil Presensi</th>
                         <th class="text-white">Nama Pegawai</th>
-                        <th class="text-white">Description</th>
-                        <th class="text-white">Attendance Image</th>
+                        <th class="text-white">Deskripsi</th>
+                        <th class="text-white">Foto Presensi</th>
                         @if (Auth::user()->role->name == 'admin')
                         <th class="text-white">Actions</th>
                         @endif
