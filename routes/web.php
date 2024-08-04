@@ -10,6 +10,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\EmployeeAttendanceController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
@@ -121,6 +122,14 @@ Route::middleware('auth')->group(function () {
 
     //Report routes
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+
+    // Employee Attendance routes
+    Route::get('employee-attendances', [EmployeeAttendanceController::class, 'index'])->name('employee-attendances.index');
+    Route::get('employee-attendances/create', [EmployeeAttendanceController::class, 'create'])->name('employee-attendances.create');
+    Route::post('employee-attendances', [EmployeeAttendanceController::class, 'store'])->name('employee-attendances.store');
+    Route::get('employee-attendances/{employeeAttendance}/edit', [EmployeeAttendanceController::class, 'edit'])->name('employee-attendances.edit');
+    Route::put('employee-attendances/{employeeAttendance}', [EmployeeAttendanceController::class, 'update'])->name('employee-attendances.update');
+    Route::delete('employee-attendances/{employeeAttendance}', [EmployeeAttendanceController::class, 'destroy'])->name('employee-attendances.destroy');
 });
 
 
