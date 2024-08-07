@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,6 +57,15 @@ class UserController extends Controller
             $user = User::where('email', $request->email)->with(['role'])->first();
             if ( ! Hash::check($request->password, $user->password, [])) {
                 throw new \Exception('Invalid Credentials');
+            }
+            if($user->role_id == 3){
+                $user = User::with(['student'])->where('id', $user->id)->first();
+                if($user->student->status == 0){
+                    return response()->json([
+                        'message' => 'Student not active',
+                        'code' => 200,
+                    ], 200);
+                }
             }
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
