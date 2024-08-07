@@ -58,8 +58,8 @@ class UserController extends Controller
             if ( ! Hash::check($request->password, $user->password, [])) {
                 throw new \Exception('Invalid Credentials');
             }
-            if($user->role_id == 3){
-                $user = User::with(['student'])->where('id', $user->id)->first();
+            if($user->role_id == 3 && $user->student !== null){
+                $user = User::with(['student', 'student.payments', 'student.transactions', 'student.packages'])->where('id', $user->id)->first();
             }
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
