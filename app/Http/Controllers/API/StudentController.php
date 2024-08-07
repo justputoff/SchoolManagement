@@ -11,7 +11,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with(['user', 'payments', 'transactions', 'pacakges'])->get();
+        $students = Student::with(['user', 'payments', 'transactions', 'packages'])->get();
         return response()->json([
             'message' => 'Students fetched successfully',
             'students' => $students
