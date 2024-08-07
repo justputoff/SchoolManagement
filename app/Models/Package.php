@@ -22,4 +22,8 @@ class Package extends Model
     {
         return $this->belongsToMany(Student::class);
     }
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }
