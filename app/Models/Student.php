@@ -29,4 +29,8 @@ class Student extends Model
     {
         return $this->hasMany(Payment::class);
     }
+    public function scheduleDetails()
+    {
+        return $this->hasMany(ScheduleDetail::class);
+    }
 }
