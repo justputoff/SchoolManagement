@@ -60,12 +60,6 @@ class UserController extends Controller
             }
             if($user->role_id == 3){
                 $user = User::with(['student'])->where('id', $user->id)->first();
-                if($user->student->status == 0){
-                    return response()->json([
-                        'message' => 'Student not active',
-                        'code' => 200,
-                    ], 200);
-                }
             }
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
